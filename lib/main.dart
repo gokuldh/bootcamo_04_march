@@ -17,19 +17,73 @@ class FlutterBootcamp extends StatelessWidget{
           backgroundColor: Colors.deepOrange,
           centerTitle: true,
         ),
-        body: Center(
-          child: Text(
-              Strings.bodytext,
-              style: TextStyle(
-                color: Colors.deepOrange,
-                fontSize: 30,
-                fontFamily: 'ArchitectsDaughter',
-              ),
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.deepOrange,
-          child: Text("Click"),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  padding: EdgeInsets.all(20),
+                ),
+                FlatButton(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  onPressed: (){},
+                ),
+                Container(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  padding: EdgeInsets.all(20),
+                ),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  padding: EdgeInsets.all(20),
+                ),
+                FlatButton(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  onPressed: (){},
+                ),
+                Container(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  padding: EdgeInsets.all(20),
+                ),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  padding: EdgeInsets.all(20),
+                ),
+                FlatButton(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  onPressed: (){},
+                ),
+                Container(
+                  child: Text("Skillto"),
+                  color: Colors.blue,
+                  padding: EdgeInsets.all(20),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
