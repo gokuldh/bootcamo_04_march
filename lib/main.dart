@@ -6,111 +6,57 @@ void main(){
   runApp(FlutterBootcamp());
 }
 
-class FlutterBootcamp extends StatelessWidget{
+class FlutterBootcamp extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
+  _FlutterBootcamp createState() => _FlutterBootcamp();
 
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(Strings.titletext),
-          backgroundColor: Colors.deepOrange,
-          centerTitle: true,
-        ),
-        body: Column(
+}
+
+class _FlutterBootcamp extends State<FlutterBootcamp>{
+
+  List<String> notes = [
+    "Maintain your Car!",
+    "Get Groceries!",
+    "Finish Project by Tonight!",
+    "This is a Bootcamp",
+    "Here to Learn Flutter",
+    "This is the End!"
+  ];
+
+  Widget cardTemplate(singlenote){
+    return Card(
+      color: Colors.deepOrange,
+      shadowColor: Colors.blue,
+      margin: EdgeInsets.all(5),
+      child: Padding(
+        padding: EdgeInsets.all(15),
+        child: Column(
           children: [
-            Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  color: Colors.deepOrange,
-                  child: Text("A"),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  color: Colors.blue,
-                  child: Text("B"),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  color: Colors.green,
-                  child: Text("C"),
-                ),
-              ),
-            ],
-          ),
-            Divider(
-              color: Colors.red,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.deepOrange,
-                    child: Text("A"),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.blue,
-                    child: Text("B"),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.green,
-                    child: Text("C"),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/coffee.jpg'),
-                    radius: 100 ,
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.blue,
-                    child: Text("B"),
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    color: Colors.green,
-                    child: Text("C"),
-                  ),
-                ),
-              ],
+            Text(
+                singlenote,
             ),
           ],
         ),
       ),
     );
   }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Notes App"),
+          centerTitle: true,
+          backgroundColor: Colors.green,
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: notes.map((singlenote) => cardTemplate(singlenote)).toList(),
+        ),
+      ),
+    );
+  }
+
 }
