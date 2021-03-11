@@ -17,69 +17,94 @@ class FlutterBootcamp extends StatelessWidget{
           backgroundColor: Colors.deepOrange,
           centerTitle: true,
         ),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        body: Column(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //crossAxisAlignment: CrossAxisAlignment.stretch,
+            Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  color: Colors.deepOrange,
+                  child: Text("A"),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  color: Colors.blue,
+                  child: Text("B"),
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  color: Colors.green,
+                  child: Text("C"),
+                ),
+              ),
+            ],
+          ),
+            Divider(
+              color: Colors.red,
+            ),
+            Row(
               children: [
-                Container(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  padding: EdgeInsets.all(20),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.deepOrange,
+                    child: Text("A"),
+                  ),
                 ),
-                FlatButton(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  onPressed: (){},
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.blue,
+                    child: Text("B"),
+                  ),
                 ),
-                Container(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  padding: EdgeInsets.all(20),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.green,
+                    child: Text("C"),
+                  ),
                 ),
               ],
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  padding: EdgeInsets.all(20),
-                ),
-                FlatButton(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  onPressed: (){},
-                ),
-                Container(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  padding: EdgeInsets.all(20),
-                ),
-              ],
+            SizedBox(
+              height: 20,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //crossAxisAlignment: CrossAxisAlignment.stretch,
+            Row(
               children: [
-                Container(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  padding: EdgeInsets.all(20),
+                Expanded(
+                  flex: 1,
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/coffee.jpg'),
+                    radius: 100 ,
+                  ),
                 ),
-                FlatButton(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  onPressed: (){},
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.blue,
+                    child: Text("B"),
+                  ),
                 ),
-                Container(
-                  child: Text("Skillto"),
-                  color: Colors.blue,
-                  padding: EdgeInsets.all(20),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    color: Colors.green,
+                    child: Text("C"),
+                  ),
                 ),
               ],
             ),
