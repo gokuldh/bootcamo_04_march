@@ -1,72 +1,132 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-//https://reqres.in/api/users?page=2
+
 
 void main() => runApp(MaterialApp(
-  home: ApiTest(),
+  home: QuickTimer(),
 ));
 
-class ApiTest extends StatefulWidget{
+class QuickTimer extends StatefulWidget{
   @override
-  _ApiTest createState() => _ApiTest();
+  _QuickTimer createState() => _QuickTimer();
 }
 
-class _ApiTest extends State<ApiTest>{
+class _QuickTimer extends State<QuickTimer>{
 
-  Map data;
-  List userData;
+  static const duration = const Duration(seconds: 1);
+  int secondspassed = 0;
+  bool isActive = false;
+  Timer timer;
 
-  Future getData() async{
-    http.Response response = await http.get('https://reqres.in/api/users?page=2');
-    data = json.decode(response.body);
-    setState(() {
-      userData = data['data'];
-    });
+  void ticker(){
+    if (isActive){
+      setState(() {
+        secondspassed = secondspassed + 1;
+      });
+    }
   }
 
   void initState(){
     super.initState();
-    getData();
+    timer = Timer.periodic(duration, (timer) {
+      ticker();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+
+    int seconds = secondspassed % 60; // 125%60 = 5 | 2
+    int minutes = secondspassed ~/ 60;
+    int hours = secondspassed ~/(60*60);
+
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Api Test'),
+        title: Text('Timer App'),
+        centerTitle: true,
         backgroundColor: Colors.deepOrange,
       ),
-      body: ListView.builder(
-          itemCount: userData == null? 0 : userData.length,
-          itemBuilder: (BuildContext context, index){
-            return Card(
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(userData[index]['avatar']),
-                      radius: 30,
-                    ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text("${userData[index]['first_name']}, ${userData[index]['last_name']}"),
-                      ),
-                  ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TimerContainer(
+                  label: "HH",
+                  value: hours.toString(),
                 ),
+                TimerContainer(
+                  label: "MM",
+                  value: minutes.toString(),
+                ),
+                TimerContainer(
+                  label: "SS",
+                  value: seconds.toString(),
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.all(20),
+              child: RaisedButton(
+                onPressed: (){
+                  setState(() {
+                    isActive = !isActive;
+                  });
+                },
+                child: Text(isActive ? 'Stop': 'Start'),
               ),
-            );
-          },
+            ),
+          ],
+        ),
       ),
     );
-
   }
 }
 
-// <, <=, a = 10, 100 == 100
+class TimerContainer extends StatelessWidget{
+
+  TimerContainer({this.label,this.value});
+  String label;
+  String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.all(10),
+      decoration: new BoxDecoration(
+        color: Colors.black87,
+        borderRadius: new BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: [
+          Text(
+              "$value",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+              ),
+          ),
+          Text(
+              "$label",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+}
+
 
 
 
